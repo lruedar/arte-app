@@ -34,39 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-Arquitectura Feature First:
-
-/src
-├── app/                        # Routing Layer (Next.js App Router)
-│   ├── layout.tsx              # Layout raíz (Navbar/Footer compartidos)
-│   ├── page.tsx                # Home / Landing
-│   ├── actors/                 # RUTA: /actors
-│   │   ├── page.tsx            # Listado de actores
-│   │   ├── create/             # RUTA: /actors/create
-│   │   │   └── page.tsx        # Página de creación
-│   │   └── [id]/               # RUTA: /actors/:id
-│   │       └── page.tsx        # Página de edición/detalle
-│   └── api/v1/actors/          # Backend interno
-│       ├── route.ts
-│       └── [id]/
-│           └── route.ts
-│
-├── modules/                    # Feature-First Layer (Lógica de negocio)
-│   └── actors/                 # Módulo específico de Actores
-│       ├── ui/                 # Componentes del módulo (ActorForm, ActorCard)
-│       ├── services/           # Peticiones específicas (getActors, createActor)
-│       ├── hooks/              # Lógica de estado (useActors, useActorForm)
-│       ├── types/              # Interfaces (Actor.ts, ActorDTO.ts)
-│       ├── utils/              # Validaciones (Zod schemas, formatters)
-│       └── pages/              # (Opcional) Contenedores grandes de cada vista
-│
-├── shared/                     # Global/Core Layer (Reutilizable)
-│   ├── ui/                     # Componentes atómicos (Button, Input, Modal)
-│   ├── services/
-│   │   └── http.ts             # Instancia de Axios o fetch configurado
-│   ├── hooks/                  # Hooks globales (useDebounce, useToast)
-│   └── utils/                  # Helpers globales
-│
-├── lib/                        # Configuraciones de librerías (prisma, firebase, etc.)
-└── styles/                     # Archivos .css globales
